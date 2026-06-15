@@ -1,124 +1,229 @@
-# 🐘 PostgreSQL Mastery Roadmap
+# 🗺️ PostgreSQL Mastery – Full Learning Roadmap
 
-From zero to production‑grade PostgreSQL engineer.  
-Each phase builds on the last. Ticked boxes = concepts you can write, explain, and debug.
-
----
-
-## 📦 Phase 1 – Foundation & Tools
-- [ ] Install PostgreSQL (local + Docker)
-- [ ] Connect with `psql` (SQL Shell) and a GUI (DataGrip / pgAdmin)
-- [ ] Create / drop databases and tables
-- [ ] Basic data types: `INTEGER`, `TEXT`, `BOOLEAN`, `DATE`, `TIMESTAMPTZ`, `SERIAL` / `IDENTITY`
-- [ ] `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`
-- [ ] `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`, `OFFSET`
-- [ ] `DISTINCT`, `AS` aliases
-- [ ] `NULL` handling (`IS NULL`, `IS NOT NULL`, `COALESCE`)
-- [ ] `LIKE` / `ILIKE` pattern matching
+> **Status:** Phase 1 in progress. Checkboxes will be ticked as concepts are completed.
 
 ---
 
-## 🧩 Phase 2 – SQL Power Tools
-- [ ] Table relationships: one-to-one, one-to-many, many-to-many
-- [ ] `JOIN` types: `INNER`, `LEFT`, `RIGHT`, `FULL OUTER`, `CROSS`
-- [ ] `GROUP BY` and aggregate functions (`COUNT`, `SUM`, `AVG`, `MAX`, `MIN`)
-- [ ] `HAVING` for filtering groups
+## Phase 1 — Foundation & Tools
+
+**Goal:** Install PostgreSQL, connect with clients, and perform basic database operations.
+
+- [ ] Install PostgreSQL 17 locally (Windows / macOS / Linux)
+- [ ] Verify installation with `psql --version`
+- [ ] Connect to default database using `psql` (CLI)
+- [ ] Connect using GUI tool (DataGrip / pgAdmin / DBeaver)
+- [ ] Create a new database: `CREATE DATABASE mydb;`
+- [ ] List databases: `\l` (psql) or equivalent
+- [ ] Connect to a specific database: `\c mydb`
+- [ ] Create first table: `CREATE TABLE users (id INT, name VARCHAR(50));`
+- [ ] Insert a row: `INSERT INTO users VALUES (1, 'Alice');`
+- [ ] Query the table: `SELECT * FROM users;`
+- [ ] Drop and recreate tables
+- [ ] Understand basic data types: `INT`, `VARCHAR`, `TEXT`, `DATE`, `TIMESTAMP`, `BOOLEAN`, `NUMERIC`
+- [ ] Use `psql` meta-commands: `\dt`, `\d table_name`, `\?`
+- [ ] Understand the difference between `psql` and other clients
+
+---
+
+## Phase 2 — SQL Power Tools
+
+**Goal:** Write complex queries, filter, sort, aggregate, and combine data.
+
+- [ ] Basic `SELECT` with column aliases
+- [ ] `WHERE` clause with operators (`=`, `<`, `>`, `LIKE`, `IN`, `BETWEEN`)
+- [ ] `ORDER BY` (ascending / descending)
+- [ ] `LIMIT` and `OFFSET` (pagination)
+- [ ] Aggregate functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
+- [ ] `GROUP BY` with `HAVING`
+- [ ] `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL OUTER JOIN`
+- [ ] `CROSS JOIN` and `SELF JOIN`
+- [ ] Working with `NULL` values (`IS NULL`, `COALESCE`, `NULLIF`)
 - [ ] Subqueries in `SELECT`, `FROM`, `WHERE`
+- [ ] Correlated subqueries
 - [ ] `EXISTS` and `NOT EXISTS`
-- [ ] Common Table Expressions (`WITH` … `AS`) – non-recursive
-- [ ] **Recursive CTEs** (threaded comments, tree structures)
-- [ ] Window functions: `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `LAG()`, `LEAD()`, `SUM() OVER`
-- [ ] `CASE` statements
-- [ ] `DISTINCT ON` (PostgreSQL‑specific)
+- [ ] Common Table Expressions (CTEs) – `WITH` clause
+- [ ] Recursive CTEs (e.g., tree traversal, graph paths)
+- [ ] Window functions: `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `LEAD()`, `LAG()`
+- [ ] `DISTINCT ON` (PostgreSQL-specific)
+- [ ] `CASE` expression (conditional logic in queries)
 - [ ] Set operations: `UNION`, `INTERSECT`, `EXCEPT`
 
 ---
 
-## 🔒 Phase 3 – Data Integrity & Design
-- [ ] Primary key, foreign key
-- [ ] `NOT NULL`, `UNIQUE`, `CHECK` constraints
-- [ ] Exclusion constraints (`EXCLUDE USING GIST`)
-- [ ] `DEFAULT` values
-- [ ] Normalization basics (1NF, 2NF, 3NF) – when to denormalize
-- [ ] `ENUM` and `DOMAIN` types
-- [ ] `GENERATED ALWAYS AS` computed columns
+## Phase 3 — Data Integrity & Design
+
+**Goal:** Design robust schemas, enforce data quality, and use advanced constraints.
+
+- [ ] Primary key constraints (single column & composite)
+- [ ] Foreign key constraints with `ON DELETE` / `ON UPDATE` actions
+- [ ] Unique constraints
+- [ ] Check constraints (`CHECK (age >= 0)`)
+- [ ] Exclusion constraints (e.g., no overlapping time ranges)
+- [ ] Not-null constraints
+- [ ] Default values for columns
+- [ ] Identity columns / `SERIAL` (auto-increment)
+- [ ] Understanding normalisation (1NF, 2NF, 3NF)
+- [ ] Creating and using indexes for foreign key columns
+- [ ] Understanding and using `ENUM` types
+- [ ] Using `DOMAIN` for custom data types
+- [ ] Table inheritance (PostgreSQL-specific)
+- [ ] Partitioning (declarative) – see Phase 9
 
 ---
 
-## 🧠 Phase 4 – Transactions & Concurrency (MVCC)
-- [ ] `BEGIN`, `COMMIT`, `ROLLBACK`
-- [ ] Understanding MVCC: snapshots, tuple visibility, vacuum basics
-- [ ] Transaction isolation levels: Read Committed, Repeatable Read, Serializable
-- [ ] Row‑level locks (`SELECT ... FOR UPDATE`, `SKIP LOCKED`)
-- [ ] `pg_stat_activity` for watching connections/queries
-- [ ] Deadlock detection basics
+## Phase 4 — Transactions & Concurrency (MVCC)
+
+**Goal:** Understand PostgreSQL's MVCC model, isolation levels, and locking.
+
+- [ ] Transaction blocks: `BEGIN`, `COMMIT`, `ROLLBACK`
+- [ ] Savepoints (`SAVEPOINT`, `ROLLBACK TO SAVEPOINT`)
+- [ ] Transaction isolation levels:
+  - [ ] Read Uncommitted (same as Read Committed in PG)
+  - [ ] Read Committed (default)
+  - [ ] Repeatable Read
+  - [ ] Serializable
+- [ ] Understanding MVCC: tuple visibility, `xmin`, `xmax`
+- [ ] Observing tuple visibility with internal queries (`ctid`, `xmin`)
+- [ ] Autovacuum and vacuuming (why it's needed)
+- [ ] Manual `VACUUM` and `VACUUM FULL`
+- [ ] Row-level locks: `FOR UPDATE`, `FOR NO KEY UPDATE`, `FOR SHARE`, `FOR KEY SHARE`
+- [ ] Advisory locks
+- [ ] Deadlocks: detection and prevention
+- [ ] `pg_locks` view
+- [ ] When to use `SERIALIZABLE` isolation
 
 ---
 
-## ⚡ Phase 5 – Performance & Indexing
-- [ ] Reading `EXPLAIN` and `EXPLAIN ANALYZE` output
-- [ ] B‑Tree indexes (default) and when they work
-- [ ] Composite indexes, covering indexes (`INCLUDE`)
-- [ ] Partial indexes (`WHERE` clause)
-- [ ] GIN, GiST, BRIN indexes – purpose and use cases
-- [ ] Index vs. sequential scan – when an index isn't used
-- [ ] `pg_stat_user_indexes` to see index usage
-- [ ] Query optimization basics (rewriting queries for speed)
+## Phase 5 — Performance & Indexing
+
+**Goal:** Make queries fast, read execution plans, and choose the right index.
+
+- [ ] Understanding sequential scans vs index scans
+- [ ] `EXPLAIN` and `EXPLAIN ANALYZE` output
+- [ ] Interpreting `EXPLAIN` costs, rows, loops
+- [ ] B‑Tree indexes (default) – when and how to use
+- [ ] Composite indexes (multiple columns)
+- [ ] Indexes on expressions (functional indexes)
+- [ ] Partial indexes (`WHERE` clause on index)
+- [ ] GIN indexes for full‑text search, JSON, arrays
+- [ ] GiST indexes for geospatial and range types
+- [ ] BRIN indexes for very large tables
+- [ ] Covering indexes (`INCLUDE` columns)
+- [ ] Monitoring index usage with `pg_stat_user_indexes`
+- [ ] Removing unused indexes
+- [ ] Index maintenance (`REINDEX`)
+- [ ] Using `pg_stat_statements` to find slow queries
+- [ ] Basic query tuning: reducing rows, better joins, rewriting CTEs
 
 ---
 
-## 🗃️ Phase 6 – Programmability & Logic
-- [ ] Views (`CREATE VIEW`) and materialized views (`REFRESH MATERIALIZED VIEW`)
-- [ ] SQL functions vs. PL/pgSQL functions
-- [ ] Stored procedures (`CALL`)
-- [ ] Trigger functions and triggers (`BEFORE`, `AFTER`, `INSTEAD OF`)
-- [ ] Event triggers (for DDL changes)
-- [ ] `DO` anonymous blocks
-- [ ] Error handling in PL/pgSQL (`RAISE`, `EXCEPTION`)
+## Phase 6 — Programmability & Logic
+
+**Goal:** Write server-side functions, triggers, and procedures.
+
+- [ ] PL/pgSQL language basics
+- [ ] Writing a simple function that returns a value
+- [ ] Functions with parameters and return tables (`RETURNS TABLE`)
+- [ ] Using variables, `IF/ELSE`, loops (`FOR`, `WHILE`)
+- [ ] Returning query results (`RETURN QUERY`)
+- [ ] Exception handling in functions (`BEGIN ... EXCEPTION`)
+- [ ] Creating stored procedures (`CREATE PROCEDURE`, `CALL`)
+- [ ] Triggers: `BEFORE` / `AFTER` / `INSTEAD OF`
+- [ ] Row-level triggers vs statement-level triggers
+- [ ] Trigger functions (`RETURNS TRIGGER`) with `NEW` and `OLD`
+- [ ] Event triggers (DDL)
+- [ ] Views and materialised views
+- [ ] Updatable views (with `INSTEAD OF` triggers)
+- [ ] Refreshing materialised views (`REFRESH MATERIALIZED VIEW`)
+- [ ] Using `pgcrypto` for hashing / encryption
+- [ ] Writing functions in other languages (PL/Python, PL/Perl) – optional
 
 ---
 
-## 🔐 Phase 7 – Administration & Security
-- [ ] Roles, users, groups (`CREATE ROLE`, `GRANT`, `REVOKE`)
-- [ ] Row‑Level Security (`CREATE POLICY`)
-- [ ] Schema management and `search_path`
-- [ ] Backup: `pg_dump`, `pg_dumpall`, `pg_restore`
-- [ ] `VACUUM`, `ANALYZE`, autovacuum basics
-- [ ] Table bloat and how to detect it
-- [ ] Connection pooling (PgBouncer)
-- [ ] Major version upgrades (`pg_upgrade`)
+## Phase 7 — Administration & Security
+
+**Goal:** Manage users, roles, backups, and secure the database.
+
+- [ ] Roles: `CREATE ROLE`, `ALTER ROLE`, `DROP ROLE`
+- [ ] Login roles vs group roles
+- [ ] Granting and revoking privileges (`GRANT`, `REVOKE`)
+- [ ] Row‑Level Security (RLS)
+- [ ] Policies (`CREATE POLICY`)
+- [ ] `pg_hba.conf` – client authentication
+- [ ] SSL/TLS configuration for encrypted connections
+- [ ] Backup and restore:
+  - [ ] `pg_dump` (plain SQL, custom, directory)
+  - [ ] `pg_dumpall` (globals + users)
+  - [ ] `pg_restore`
+  - [ ] Point‑in‑time recovery (WAL archiving) – basic concept
+- [ ] Monitoring disk usage (`pg_database_size`, `pg_total_relation_size`)
+- [ ] Logging and log analysis (`pg_stat_activity`, `log_statement`)
+- [ ] Using connection poolers (PgBouncer) – concept
+- [ ] Basic maintenance: `ANALYZE`, `REINDEX`, `VACUUM`
 
 ---
 
-## 🚀 Phase 8 – Modern PostgreSQL & Extensions
-- [ ] Full‑text search (`tsvector`, `tsquery`, GIN indexes)
-- [ ] JSON / JSONB: storage, indexing, `->`, `->>`, `@>`, `?`
-- [ ] `pgvector` – vector storage and similarity search (AI/RAG)
-- [ ] PostGIS basics – spatial data types and functions
-- [ ] `pg_cron` – in‑database job scheduling
-- [ ] Table partitioning (`PARTITION BY RANGE/LIST/HASH`)
-- [ ] `timescaledb` (time‑series) – optional but valuable
-- [ ] Foreign Data Wrappers (`postgres_fdw`, `file_fdw`)
+## Phase 8 — Modern PostgreSQL & Extensions
+
+**Goal:** Use advanced data types, full‑text search, geospatial, and AI extensions.
+
+- [ ] JSON and JSONB data types
+- [ ] JSON operators (`->`, `->>`, `@>`, `?`, `?|`)
+- [ ] Indexing JSONB with GIN
+- [ ] Full‑Text Search:
+  - [ ] `tsvector` and `tsquery`
+  - [ ] Ranking with `ts_rank`
+  - [ ] Dictionary and stop words
+- [ ] `pgvector` extension for vector similarity (embeddings)
+  - [ ] Install `pgvector`
+  - [ ] Store vectors and use cosine distance
+- [ ] PostGIS extension:
+  - [ ] Install PostGIS
+  - [ ] Geometry types (`POINT`, `LINESTRING`, `POLYGON`)
+  - [ ] Spatial queries (`ST_Distance`, `ST_Contains`)
+- [ ] TimescaleDB for time‑series data (optional)
+- [ ] Foreign Data Wrappers (FDW): query external data sources
+- [ ] `dblink` and `postgres_fdw`
+- [ ] `pgcrypto`, `uuid-ossp`, `hstore` (other useful extensions)
 
 ---
 
-## 📊 Phase 9 – Production & Monitoring
-- [ ] Logging configuration (`log_min_duration_statement`, `auto_explain`)
-- [ ] Connection management and `pg_stat_activity`
-- [ ] Replication concepts: streaming replication, logical replication
-- [ ] High‑availability patterns (Patroni, etc.) – awareness level
-- [ ] Monitoring with `pg_stat_statements`, `pg_stat_user_tables`
+## Phase 9 — Production & Monitoring
+
+**Goal:** Deploy, monitor, and scale PostgreSQL for real applications.
+
+- [ ] Deploy PostgreSQL on a cloud VM (DigitalOcean, AWS EC2)
+- [ ] Use managed services (AWS RDS, Google Cloud SQL, Neon, Supabase) – understand trade-offs
+- [ ] Basic performance tuning: `shared_buffers`, `work_mem`, `effective_cache_size`
+- [ ] Connection management and pooling with PgBouncer
+- [ ] Setting up streaming replication (primary → standby)
+- [ ] Failover and high‑level concepts
+- [ ] Using `pg_stat_statements` for query analysis
+- [ ] Using `pgBadger` for log analysis
+- [ ] Monitoring with Prometheus + Grafana (optional)
+- [ ] Alerting on critical metrics
+- [ ] Disaster recovery planning (backup + WAL archiving)
+- [ ] Upgrading PostgreSQL versions (pg_upgrade)
+- [ ] Security hardening (SSL, roles, network rules)
+- [ ] Understanding `EXPLAIN` in a production context
 
 ---
 
-## 🧭 How to Use This Roadmap
-1. Start at Phase 1 – even if you think you know it, test yourself.
-2. For each unchecked item:
-   - Learn the concept (docs, videos, hands‑on)
-   - Write a working SQL script that demonstrates it
-   - Explain it in your own words (in a comment or a note)
-3. Commit your script to the repository and tick the box.
-4. Only move to the next phase when the current one is fully checked.
+## ✅ Progress Summary
 
-This roadmap lives in your GitHub repo. Watching the checkboxes fill up is proof of real, demonstrable growth.  
-Good luck, and enjoy becoming a PostgreSQL master! 🐘
+| Phase | Topic | Status |
+|-------|-------|--------|
+| 1 | Foundation & Tools | 🔜 In progress |
+| 2 | SQL Power Tools | ⬜ Upcoming |
+| 3 | Data Integrity & Design | ⬜ Upcoming |
+| 4 | Transactions & Concurrency (MVCC) | ⬜ Upcoming |
+| 5 | Performance & Indexing | ⬜ Upcoming |
+| 6 | Programmability & Logic | ⬜ Upcoming |
+| 7 | Administration & Security | ⬜ Upcoming |
+| 8 | Modern PostgreSQL & Extensions | ⬜ Upcoming |
+| 9 | Production & Monitoring | ⬜ Upcoming |
+
+---
+
+*Last updated: June 2026*  
+*Accompanies [postgresql-mastery](https://github.com/rajit2004/postgresql-mastery) repository – learning in public.*
