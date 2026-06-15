@@ -90,6 +90,14 @@ All SQL files are runnable directly in your own PostgreSQL instance.
 
 ---
 
+## 🚀 How to use this repo
+
+1. Clone the repo
+2. Open the `.sql` files in DataGrip / psql / pgAdmin
+3. Run them in order (phase → sub‑phase)
+4. Experiment – break things, then fix them
+
+---
 ## 🔧 Tools I'm Using
 
 - **Database**: PostgreSQL 17 (local installation)
@@ -115,6 +123,11 @@ All SQL files are runnable directly in your own PostgreSQL instance.
 This repo is free for everyone — no paywalls, no paid courses. If it's helped you or you want to support the journey:
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/rajit2004)
+
+## 📚 My other learning journeys
+
+- [Java + DSA Progress](https://github.com/rajit2004/java_progress) – 173+ solved problems
+- [DeepSeekWidget](https://github.com/rajit2004/DeepSeekWidget) – Android widget for AI
 
 ---
 
