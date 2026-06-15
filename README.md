@@ -14,6 +14,11 @@ I'm **Ranesh Rajit**, a B.Tech CS student from India, learning PostgreSQL from s
 
 Every query I write, every experiment I run, and every production tip I learn goes into this repo so that **anyone else on the same journey can learn alongside me for free.**
 
+
+[![Roadmap](https://img.shields.io/badge/Learning-Roadmap-blue?style=flat&logo=postgresql)](ROADMAP.md)
+
+📖 See the [full roadmap](ROADMAP.md) with every concept planned.
+
 ---
 
 ## 📈 Learning Progress
