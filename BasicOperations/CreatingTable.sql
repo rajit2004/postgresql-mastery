@@ -1,0 +1,5 @@
+CREATE TABLE Student(
+    NAME VARCHAR(50),
+    AGE INT,
+    GENDER CHAR
+)
