@@ -1,0 +1,11 @@
+# Force GitHub to detect SQL as the primary language
+*.sql linguist-language=SQL
+*.sql linguist-detectable=true
+
+# Mark non-SQL files as documentation/vendored (ignored for stats)
+*.md linguist-documentation=true
+LICENSE linguist-documentation=true
+ROADMAP.md linguist-documentation=true
+README.md linguist-documentation=true
+.gitignore linguist-vendored=true
+.gitattributes linguist-vendored=true
