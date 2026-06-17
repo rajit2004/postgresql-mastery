@@ -1,0 +1,40 @@
+# IntelliJ / DataGrip IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+
+# Database connection settings (contains your password!)
+dataSources/
+dataSources.local.xml
+data_source_mapping.xml
+sqldialects.xml
+
+# OS junk files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Scratches and Consoles (temporary scratchpads)
+Scratches and Consoles/
+
+# Project-specific settings
+Project_Default.xml
+inspectionProfiles/
+
+# Your C++ and Java files (keep them out of this repo)
+*.cpp
+*.java
+*.class
+*.exe
+
+# Any other garbage
+*.bak
+*.old
+*.orig
