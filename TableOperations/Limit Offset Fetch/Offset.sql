@@ -32,7 +32,7 @@ AND gender = 'Male'
 ORDER BY id
 LIMIT 25 OFFSET 50;
 
--- OFFSET 100: Returns nothing (you already tried this)
+-- OFFSET 100: Returns nothing
 SELECT * FROM users
 WHERE email IS NOT NULL
 AND last_name IS NOT NULL
