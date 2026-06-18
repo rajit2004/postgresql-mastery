@@ -1,0 +1,1 @@
+select country , count(*) from users group by country order by country;

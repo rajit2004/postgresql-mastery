@@ -1,0 +1,1 @@
+select gender , count(*) from users group by gender ;
