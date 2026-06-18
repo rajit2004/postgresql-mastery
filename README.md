@@ -41,12 +41,12 @@ See the full roadmap with sub‑topics in [ROADMAP.md](./ROADMAP.md).
 
 ## 🎯 Learning Milestones
 
-- [ ] Installed PostgreSQL and connected via `psql` or a GUI
-- [ ] Created first database and table
-- [ ] Wrote basic `SELECT`, `INSERT`, `UPDATE`, `DELETE` statements
-- [ ] Understood primary keys, foreign keys, and relationships
+- [x] Installed PostgreSQL and connected via `psql` or a GUI
+- [x] Created first database and table
+- [x] Wrote basic `SELECT`, `INSERT`, `UPDATE`, `DELETE` statements
+- [x] Understood primary keys, foreign keys, and relationships
 - [ ] Mastered different `JOIN` types (`INNER`, `LEFT`, `RIGHT`, `FULL`)
-- [ ] Used `GROUP BY` and aggregate functions (`COUNT`, `SUM`, `AVG`)
+- [x] Used `GROUP BY` and aggregate functions (`COUNT`, `SUM`, `AVG`)
 - [ ] Wrote subqueries and `WITH` (CTE) queries
 - [ ] Built a recursive query (e.g., threaded comments, tree traversal)
 - [ ] Learned about transactions, `BEGIN`, `COMMIT`, `ROLLBACK`
@@ -73,8 +73,8 @@ See the full roadmap with sub‑topics in [ROADMAP.md](./ROADMAP.md).
 
 ## 🧠 Concepts Covered (so far)
 
-- 🔜Installation & Tooling (`psql`, DataGrip, pgAdmin)
-- 🔜 Database creation, basic data types
+- ✅ Installation & Tooling (`psql`, DataGrip, pgAdmin)
+- ✅ Database creation, basic data types
 - 🔜 Multi‑version concurrency control (MVCC)
 - 🔜 Recursive Common Table Expressions (CTEs)
 - 🔜 Window functions, `DISTINCT ON`, `CASE`
@@ -103,12 +103,15 @@ All SQL files are runnable directly in your own PostgreSQL instance.
 4. Experiment – break things, then fix them
 
 ---
-## 🔧 Tools I'm Using
 
-- **Database**: PostgreSQL 17 (local installation)
-- **IDE**: JetBrains DataGrip (with full subscription)
-- **CLI**: `psql` in PowerShell / Git Bash
-- **Version Control**: Git + GitHub, everything tracked publicly
+## 🔧 Environment & Tools
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-336791?style=flat-square&logo=postgresql)
+![DataGrip](https://img.shields.io/badge/DataGrip-JetBrains-000000?style=flat-square&logo=datagrip)
+![psql](https://img.shields.io/badge/CLI-psql-316192?style=flat-square&logo=postgresql)
+![PowerShell](https://img.shields.io/badge/Shell-PowerShell-5391FE?style=flat-square&logo=powershell)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
 
 ---
 
